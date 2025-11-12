@@ -6,7 +6,7 @@ This is the official code of the paper **Look As You Think: Unifying Reasoning a
 
 ## Overview
 
-TL;DR: In this paper, we introduce the **Chain of Evidence (CoE)** paradigm, which models stepwise inference by grounding each chain-of-thought (CoT) reasoning step. To realize CoE, we propose **Look As You Think (LAT)**, a two-stage reinforcement learning (RL) framework that trains VLMs to unify CoT reasoning and visual grounding by generating progressive reasoning process paired with an aligned visual attribution for each reference element.
+**TL;DR**: In this paper, we introduce the **Chain of Evidence (CoE)** paradigm, which models stepwise inference by grounding each chain-of-thought (CoT) reasoning step. To realize CoE, we propose **Look As You Think (LAT)**, a two-stage reinforcement learning (RL) framework that trains VLMs to unify CoT reasoning and visual grounding by generating progressive reasoning process paired with an aligned visual attribution for each reference element.
 
 <p align="center"><img src="./fig/framework.jpg" alt="" width="80%"></p>
 
