@@ -30,7 +30,7 @@ pip install -r requirements.txt
 ## Run
 **1. Download Data**
 
-Prepare [VISA](https://huggingface.co/collections/MrLight/visa-rag-with-visual-source-attribution) datasets. Place the downloaded datasets under the /data/visa/(paper/wiki/fine-web) directories. Modify the paths as necessary to match your local environment.
+Prepare [VISA](https://huggingface.co/collections/MrLight/visa-rag-with-visual-source-attribution) datasets. Place the downloaded datasets under the `/data/visa/`(paper/wiki/fine-web) directories. Modify the paths as necessary to match your local environment.
 
 To obtain images for the multi-candidate setup, please run [/src/image_address.py](/src/image_address.py).
 
@@ -56,11 +56,15 @@ model.save_pretrained("merged_model")
 ```sh
 bash scripts/grpo.sh
 ```
+After SFT training, the LoRA parameters need to be merged into the base model, and the model_name_or_path should be updated accordingly.
+
 
 **4. Evaluate Model**
 ```sh
 python src/evaluation.py
 ```
+During evaluation, it is necessary to manually specify the model and the corresponding LoRA parameters to reproduce the results, while selecting the appropriate evaluation settings and dataset names.
+
 
 ## Case
 
