@@ -160,7 +160,7 @@ class LazySupervisedDataset(Dataset):
         self.script_args = script_args
         self.ds = script_args.dataset_name
         if 'visa' in data_name:
-            df_all = pl.read_parquet(f"./data/rl/train.parquet")
+            df_all = pl.read_parquet(f"../data/rl/train.parquet")
             if SINGLE_IMAGE:
                 self.list_data_dict = [row for idx, row in enumerate(df_all.iter_rows(named=True))]
             else:
@@ -213,7 +213,7 @@ class LazySupervisedDataset(Dataset):
             ]
         else:
             path = example['id']
-            with open(f"./data/{example['file']}/image/{path}.bin", "rb") as rb:
+            with open(f"../data/visa/{example['file']}/image/{path}.bin", "rb") as rb:
                 image = Image.open(io.BytesIO(rb.read()))
             example["messages"] = make_conversation_image(example, image.size)
         return {
