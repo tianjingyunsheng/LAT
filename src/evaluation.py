@@ -274,7 +274,20 @@ def step_reward(content, candidiate, ids):
         print(e)
     return reward
 
-
+# Evaluate the `no answer` cases
+def process_jsonl(input_file):
+    total = 0
+    correct = 0
+    with open(input_file, 'r', encoding='utf-8') as infile:
+        for line in infile:
+            data = json.loads(line)
+            if data.get('result', {}).get('pos_idx') == -1:
+                total += 1
+                if 'no answer' in normalize_text(data.get('result', {}).get('model_output', '')[0]):
+                    correct += 1
+    print(f"Total entries: {total}")
+    print(f"Correct entries: {correct}")
+    print(f"Accuracy: {correct / total if total > 0 else 0:.2f}")
 
 if __name__ == '__main__':
     print("Start evaluation...")
