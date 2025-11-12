@@ -13,7 +13,7 @@ TL;DR: In this paper, we introduce the **Chain of Evidence (CoE)** paradigm, whi
 
 If you find this repository or paper useful, you can cite:
 ```
-
+Coming soon
 ```
 
 
