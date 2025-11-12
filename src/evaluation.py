@@ -19,6 +19,8 @@ from termcolor import colored
 
 direct_answer = False
 MODEL_PATH="model to test"
+LORA_MODEL_NAME="Lora path"
+
 DATA_ROOT = "../data/visa"
 multi_image = False
 
@@ -54,6 +56,10 @@ model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
     attn_implementation="flash_attention_2",
     device_map="auto",
 )
+if LORA_MODEL_NAME:
+    from peft import PeftModel
+    model = PeftModel.from_pretrained(model, LORA_MODEL_NAME)
+
 processor = AutoProcessor.from_pretrained("Qwen/Qwen2.5-VL-7B-Instruct")
 
 # Post-process the generated text
