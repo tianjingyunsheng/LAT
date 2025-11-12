@@ -147,7 +147,7 @@ class LazySupervisedDataset(Dataset):
             train_dataset = glob.glob(os.path.join(DATA_ROOT, "*.parquet"))
             for file in train_dataset:
                 df = pl.read_parquet(file).select(columns_to_read)
-                file_name = "./data/r1_template/modified_{}.json".format(file.split("/")[-1])
+                file_name = "../data/r1_template/modified_{}.json".format(file.split("/")[-1])
 
                 with open(file_name, "r") as r:
                     json_data = json.load(r)
@@ -219,7 +219,7 @@ class LazySupervisedDataset(Dataset):
             for i, path in enumerate(example['candidates']):
                 content.append({"type": "text", "text": f"Document Image {i + 1}:\n"})
                 content.append({"type": "image"})
-                with open(f".data/{ds}/image/{path}.bin", "rb") as rb:
+                with open(f"../data/visa/{ds}/image/{path}.bin", "rb") as rb:
                     item = Image.open(io.BytesIO(rb.read()))
                     image_for_train.append(item)
                     content.append({"type": "text", "text": f"ImageSize: {item.size}\n\n"})
