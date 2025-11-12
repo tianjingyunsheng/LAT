@@ -42,6 +42,8 @@ bash scripts/sft_inference.sh
 > 1. After each training session, merge the LoRA parameters by executing the following code.
 > 2. For multi-image training scenarios, initialize the multi-image model using the single-image trained version. Subsequently, perform supervised fine-tuning (SFT) on the multi-image CoE data in $\mathcal{D}_{\text{final}}$, fine-tuning only the LoRA adapter of the language model while keeping the vision transformer (ViT) frozen to minimize GPU memory consumption.
 ```
+from peft import PeftModel
+
 model = PeftModel.from_pretrained(model, lora_name_or_path)
 model = model.merge_and_unload()
 model.save_pretrained("merged_model")
